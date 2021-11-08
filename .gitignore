@@ -3,4 +3,4 @@ tmp/**/*
 log/**/*
 
 .env
-config/master.key
+/config/master.key
