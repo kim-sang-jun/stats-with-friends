@@ -6,11 +6,8 @@ class ApplicationController < ActionController::Base
       return if Rails.env.development?
 
       authenticate_or_request_with_http_token do |token, options|
-        begin
-          JWT.decode token, SCORES_SECRET, true, { algorithm: 'HS256' }
-        rescue JWT::DecodeError => e
-          return false
-        end
+        ActiveSupport::SecurityUtils.secure_compare(token, SCORES_SECRET)
+        # JWT.decode token, SCORES_SECRET, true, { algorithm: 'HS256' }
       end
     end
 end
