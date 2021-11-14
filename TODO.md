@@ -1,5 +1,4 @@
 ## Application
-- Add token as config var on Heroku
 - Fork `single-digits`
 - Add token as secret to `single-digits`
 - Add POST score from `single-digits` to `stats-with-friends` 
