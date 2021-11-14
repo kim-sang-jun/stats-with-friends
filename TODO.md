@@ -1,5 +1,4 @@
 ## Application
-- Create `index` view for `/scores` - list of all scores, filterable by days
 - Read authentication from ENV
 - Add token as config var on Heroku
 - Fork `single-digits`
