@@ -1,5 +1,4 @@
 ## Application
-- Read authentication from ENV
 - Add token as config var on Heroku
 - Fork `single-digits`
 - Add token as secret to `single-digits`
