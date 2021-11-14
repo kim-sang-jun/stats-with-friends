@@ -11,5 +11,6 @@ class ApplicationController < ActionController::Base
         rescue JWT::DecodeError => e
           return false
         end
+      end
     end
 end
