@@ -1,24 +1,91 @@
-# README
+# stats-with-friends
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A rails app that manages scores for:
+- NYTimes Mini Crossword
 
-Things you may want to cover:
+## Dependencies
 
-* Ruby version
+Ruby:
 
-* System dependencies
+```sh
+$ ruby --version
+ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-darwin19]
+```
 
-* Configuration
+Postgres:
+ 
+```sh
+$ brew info postgresql
+postgresql: stable 14.1 (bottled), HEAD
+```
 
-* Database creation
+## Setup
 
-* Database initialization
+Setup the databases:
 
-* How to run the test suite
+```sh
+$ bin/rails db:setup
+Created database 'stats_with_friends'
+Created database 'stats_with_friends_test'
 
-* Services (job queues, cache servers, search engines, etc.)
+$ bin/rails db:migrate
+```
 
-* Deployment instructions
+## Run
 
-* ...
+Run the application via: 
+
+```sh
+$ bin/rails server
+```
+
+## Configuration
+
+There's a local `.env` for local/dev/test configuration:
+
+```
+POSTGRES_USER=''
+POSTGRES_PASSWORD=''
+POSTGRES_HOST='localhost'
+POSTGRES_DB='stats_with_friends'
+POSTGRES_TEST_DB='stats_with_friends_test'
+```
+
+## Tests
+
+N/A 
+
+## Deployment
+
+Deployment is currently done via Heroku. Use the [heroku CLI](https://devcenter.heroku.com/articles/using-the-cli) to do things.
+
+Login to heroku:
+
+```sh
+$ heroku login
+```
+
+View your heroku apps:
+
+```sh
+$ heroku apps
+```
+
+Deploy a branch:
+
+```sh
+$ git push heroku <branch>
+```
+
+This deploys to the instance configured as that git origin:
+
+```sh
+$ cat .git/config
+...
+[remote "heroku"]
+    url = https://git.heroku.com/mysterious-beyond-68698.git
+    fetch = +refs/heads/*:refs/remotes/heroku/*
+...
+```
+
+
