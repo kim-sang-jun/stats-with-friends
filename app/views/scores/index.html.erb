@@ -1,9 +1,9 @@
-<% @results_by_date.each do |date,results| %>
+<% @scores_by_date.each do |date,scores| %>
   <p> <%= date %> </p>
 
   <ul>
-    <% results.each do |result| %>
-        <li><%= result.user.name %> <%= result.seconds %>s at <%= result.published_time %> </li>
+    <% scores.each do |score| %>
+        <li><%= score.user.name %> <%= score.seconds %>s at <%= score.published_time %> </li>
     <% end %>
   </ul>
 
