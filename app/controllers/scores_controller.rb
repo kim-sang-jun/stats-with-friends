@@ -1,7 +1,9 @@
 class ScoresController < ApplicationController
   protect_from_forgery with: :null_session, only: [ :create ] 
+  wrap_parameters Score, include: [ :username ], format: [:json], only: [ :create ]
+
   before_action :authenticate, only: [ :create ]
-  before_action :require_params, only: [ :create ]
+  # before_action :require_params, only: [ :create ]
 
   def index
     @scores_by_date = {} 
@@ -17,17 +19,23 @@ class ScoresController < ApplicationController
     end
   end
 
-  def create
-    user = User.find_or_create_by(name: params[:username])
-    result = Score.find_or_create_by(user: user, seconds: params[:seconds], published_at: params[:published_at]).save!
+  def create 
+    scores = []
 
-    render json: result
+    params[:_json].each do |p|
+      require_params(p)
+      user = User.find_or_create_by(name: p[:username])
+      score = Score.find_or_create_by(user: user, seconds: p[:seconds], published_at: p[:published_at])
+      scores.push(score)
+    end
+
+    render json: scores, status: 201
   end
 
   private
 
-  def require_params
-    params.require([:username, :seconds, :published_at])
+  def require_params(p)
+    p.require([:username, :seconds, :published_at])
   rescue ActionController::ParameterMissing => e 
     render json: { message: e.message }, :status => :bad_request
   end

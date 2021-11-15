@@ -11,4 +11,9 @@ class Score < ApplicationRecord
   def published_time
     published_at.in_time_zone("America/Los_Angeles").strftime("%l:%M:%S %p")
   end
+
+  # TODO: Figure out how to interface the json response (don't just publish the rails model!)
+  def to_json
+    "foo: #{id}"
+  end
 end
