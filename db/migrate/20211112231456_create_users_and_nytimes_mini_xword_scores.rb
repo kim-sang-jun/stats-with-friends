@@ -1,4 +1,4 @@
-class CreateUsersAndNytimesMiniXwordResults < ActiveRecord::Migration[6.1]
+class CreateUsersAndNytimesMiniXwordScores < ActiveRecord::Migration[6.1]
   def change
     create_table :users do |t|
       t.string :name
@@ -6,7 +6,7 @@ class CreateUsersAndNytimesMiniXwordResults < ActiveRecord::Migration[6.1]
       t.timestamps
     end
 
-    create_table :nytimes_mini_xword_results do |t|
+    create_table :nytimes_mini_xword_scores do |t|
       t.belongs_to :user
       t.datetime :published_at
       t.integer :seconds

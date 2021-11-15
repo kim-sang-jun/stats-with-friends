@@ -59,6 +59,11 @@ N/A
 
 Deployment is currently done via Heroku. Use the [heroku CLI](https://devcenter.heroku.com/articles/using-the-cli) to do things.
 
+[Common rails commands on Heroku](https://devcenter.heroku.com/articles/getting-started-with-rails6#run-the-rails-console) can be run via:
+```sh
+$ heroku run rails db:migrate
+```
+
 Login to heroku:
 
 ```sh

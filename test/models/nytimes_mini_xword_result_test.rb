@@ -1,6 +1,6 @@
 require "test_helper"
 
-class NYTimesMiniXwordResultTest < ActiveSupport::TestCase
+class NYTimesMiniXwordScoreTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
