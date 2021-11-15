@@ -1,8 +1,12 @@
 ## Application
-- Fork `single-digits`
-- Add token as secret to `single-digits`
+- Try out `rswag`
+- Differentiate between `User` (user of stats-with-friends) and `Player` (participant in a game)
+  - A `User` may have many `Players`
+  - A `Player` is not required to be a `User`
+  - A `User` should have username/email, and can be associated to other accounts like Discord/Twitch
+    - Accounts can be used for automated friend-discovery
+    - Logins can be OAuthed via Accounts and create a `User`
 - Add POST score from `single-digits` to `stats-with-friends` 
-- Test
 
 ## Dev Experience
 - [Improve `pry` usage](https://github.com/pry/pry#use-pry-as-your-rails-console) by making it rails console and add syntax highlighting
