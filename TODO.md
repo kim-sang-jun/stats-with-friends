@@ -1,5 +1,4 @@
 ## Application
-- Make POST `/scores` accept a list of scores
 - Try out `rswag`
 - Differentiate between `User` (user of stats-with-friends) and `Player` (participant in a game)
   - A `User` may have many `Players`

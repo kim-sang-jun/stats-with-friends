@@ -21,15 +21,20 @@ class ScoresController < ApplicationController
 
   def create 
     scores = []
+    created_new_records = false
 
     params[:_json].each do |p|
       require_params(p)
-      user = User.find_or_create_by(name: p[:username])
-      score = Score.find_or_create_by(user: user, seconds: p[:seconds], published_at: p[:published_at])
-      scores.push(score)
+      user = User.find_or_create_by!(name: p[:username])
+      score = Score.find_or_create_by!(user: user, seconds: p[:seconds], published_at: p[:published_at])
+      unless created_new_records
+        created_new_records = score.previously_new_record?
+      end
+
+      scores.push(score.to_json)
     end
 
-    render json: scores, status: 201
+    render json: scores, status: created_new_records ? 201 : 200
   end
 
   private
