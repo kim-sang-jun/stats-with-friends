@@ -1,5 +1,6 @@
 ## Application
 - Try out `rswag`
+  - Pass 400 bad request tests (return a JSON response when missing parameters!)
 - Differentiate between `User` (user of stats-with-friends) and `Player` (participant in a game)
   - A `User` may have many `Players`
   - A `Player` is not required to be a `User`
@@ -20,4 +21,5 @@
   - Buffers?
   - Rails snippets? 
 - Combined history across windows (so I can `history | grep 'foo'`)
+- Try out `neoterm`
 

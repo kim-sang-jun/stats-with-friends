@@ -3,7 +3,6 @@ class ScoresController < ApplicationController
   wrap_parameters Score, include: [ :username ], format: [:json], only: [ :create ]
 
   before_action :authenticate, only: [ :create ]
-  # before_action :require_params, only: [ :create ]
 
   def index
     @scores_by_date = {} 
@@ -32,16 +31,16 @@ class ScoresController < ApplicationController
       end
 
       scores.push(score.to_json)
+    rescue ActionController::ParameterMissing => e 
+      render json: { message: e.message }, :status => :bad_request and return
     end
 
-    render json: scores, status: created_new_records ? 201 : 200
+    render json: scores, status: created_new_records ? :created : :ok
   end
 
   private
 
   def require_params(p)
     p.require([:username, :seconds, :published_at])
-  rescue ActionController::ParameterMissing => e 
-    render json: { message: e.message }, :status => :bad_request
   end
 end
