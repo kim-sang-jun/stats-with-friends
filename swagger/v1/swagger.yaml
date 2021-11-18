@@ -1,0 +1,42 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/scores":
+    post:
+      summary: Creates scores
+      tags:
+      - Scores
+      parameters: []
+      responses:
+        '201':
+          description: scores created
+        '400':
+          description: bad request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  username:
+                    type: string
+                    format: email
+                  seconds:
+                    type: integer
+                  published_at:
+                    type: string
+                    format: date-time
+              required:
+              - username
+              - seconds
+              - published_at
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000

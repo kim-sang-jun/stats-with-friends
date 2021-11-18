@@ -10,9 +10,9 @@ RSpec.describe 'Scores API', type: :request do
         items: {
           type: :object,
           properties: {
-            username: { type: :string },
+            username: { type: :string, format: 'email' },
             seconds: { type: :integer },
-            published_at: { type: :datetime },
+            published_at: { type: :string, format: 'date-time' },
           },
         },
         required: [ 'username', 'seconds', 'published_at' ]
