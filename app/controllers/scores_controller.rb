@@ -22,6 +22,7 @@ class ScoresController < ApplicationController
     scores = []
     created_new_records = false
 
+    byebug
     params[:_json].each do |p|
       require_params(p)
       user = User.find_or_create_by!(name: p[:username])

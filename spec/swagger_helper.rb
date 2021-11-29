@@ -24,13 +24,21 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'http://{defaultHost}',
-          variables: {
-            defaultHost: {
-              default: 'www.statswithfriends.com'
-            }
-          }
-        }
+          url: 'http://localhost:3000',
+          description: 'Local dev server'
+        },
+        {
+          url: 'https://boiling-bastion-54713.herokuapp.com',
+          description: 'Staging server'
+        },
+        {
+          url: 'https://mysterious-beyond-68698.herokuapp.com/',
+          description: 'Production server (direct)'
+        },
+        {
+          url: 'https://statswithfriends.com',
+          description: 'Production server'
+        },
       ],
       components: {
         securitySchemes: {
