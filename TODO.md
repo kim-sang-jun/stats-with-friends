@@ -1,13 +1,19 @@
-## Application
-- Try out `rswag`
-  - Pass 400 bad request tests (return a JSON response when missing parameters!)
+## OpenAPI Client
+
+- Generate functional Ruby client
+- Write script to auto-generate Ruby client and swagger docs (tie `bin/rails rswag` to `openapi-generator ...`)
+- Try including client as submodule (goal: has it's own repo, but available directly in main repo)
+- Generate functional Go client, rinse and repeat
+
+## General
+
+- Add POST score from `single-digits` to `stats-with-friends` 
 - Differentiate between `User` (user of stats-with-friends) and `Player` (participant in a game)
   - A `User` may have many `Players`
   - A `Player` is not required to be a `User`
   - A `User` should have username/email, and can be associated to other accounts like Discord/Twitch
     - Accounts can be used for automated friend-discovery
     - Logins can be OAuthed via Accounts and create a `User`
-- Add POST score from `single-digits` to `stats-with-friends` 
 
 ## Dev Experience
 - Consider byebug vs. pry

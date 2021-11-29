@@ -45,8 +45,32 @@ RSpec.configure do |config|
           bearer_auth: {
             type: :http,
             scheme: :bearer
+          }
+        },
+        schemas: {
+          errors_object: {
+            type: 'object',
+            properties: {
+              errors: { '$ref' => '#/components/schemas/errors_map' }
+            }
           },
-        }
+          errors_map: {
+            type: 'object',
+            additionalProperties: {
+              type: 'array',
+              items: { type: 'string' }
+            }
+          },
+          score: {
+            type: 'object',
+            properties: {
+              username: { type: :string, format: 'email' },
+              seconds: { type: :integer },
+              published_at: { type: :string, format: 'date-time' },
+            },
+            required: %w[username seconds published_at]
+          },
+        },
       }
     }
   }

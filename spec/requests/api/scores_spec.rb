@@ -8,14 +8,7 @@ RSpec.describe 'Scores API', type: :request do
       consumes 'application/json'
       parameter name: :scores, in: :body, schema: {
         type: :array,
-        items: {
-          type: :object,
-          properties: {
-            username: { type: :string, format: 'email' },
-            seconds: { type: :integer },
-            published_at: { type: :string, format: 'date-time' },
-          },
-        },
+        items: { '$ref' => '#/components/schemas/score' },
         required: [ 'username', 'seconds', 'published_at' ]
       }
 
