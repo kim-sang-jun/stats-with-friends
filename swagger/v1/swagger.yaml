@@ -9,12 +9,16 @@ paths:
       summary: Creates scores
       tags:
       - Scores
+      security:
+      - bearer_auth: []
       parameters: []
       responses:
         '201':
           description: scores created
         '400':
           description: bad request
+        '401':
+          description: unauthorized
       requestBody:
         content:
           application/json:
@@ -40,3 +44,8 @@ servers:
   variables:
     defaultHost:
       default: www.statswithfriends.com
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer

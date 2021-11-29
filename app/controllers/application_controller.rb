@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   private
     def authenticate
-      return if Rails.env.development? || Rails.env.test?
+      return if Rails.env.development?
 
       authenticate_or_request_with_http_token do |token, options|
         begin
